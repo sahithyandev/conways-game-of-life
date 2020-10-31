@@ -1,0 +1,89 @@
+:root {
+    --child-width: 10px;
+}
+html {
+    margin: 0;
+}
+body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: fit-content;
+    justify-content: center;
+    font-family: "Syne Tactile";
+}
+header {
+    // align-self: flex-start;
+    // background-color: red;
+    span {
+      font-size: 1.2em;
+    }
+    h1 {
+        font-size: 2.5em;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+}
+
+main {
+    display: flex;
+    gap: 40px;
+}
+
+#grid-container {
+    width: calc(var(--child-width) * var(--num-cols));
+    height: calc(var(--child-width) * var(--num-rows));
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), var(--child-width));
+
+    .child {
+        cursor: pointer;
+        box-sizing: border-box;
+        border: .4px solid black;
+        height: var(--child-width);
+        width: var(--child-width);
+
+        &.alive {
+            background-color: rgb(48, 47, 47);
+        }
+    }
+}
+
+#buttons {   
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+        font-family: "Syne Tactile";
+        // font-family: "Roboto Mono";
+        font-weight: bold;
+        font-size: 1.2em;
+        cursor: pointer;
+        min-width: 180px;
+        border: 1px solid rgb(48, 48, 48);
+        border-radius: 4px;
+        padding: 4px;
+        transition: all .3s ease;
+        text-transform: uppercase;
+
+        &::after {
+            content: attr(data-keyboard-binding);
+            font-size: .6em;
+            display: block;
+            opacity: 0.5;
+        }
+
+        &:hover {
+            background: black;
+            
+            color: white;
+        }
+    }
+}
+
+#start-stop-button {
+}
+
+#clear-button { }

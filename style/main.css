@@ -1,0 +1,102 @@
+:root {
+  --child-width: 10px;
+}
+
+html {
+  margin: 0;
+}
+
+body {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "Syne Tactile";
+}
+
+header span {
+  font-size: 1.2em;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+}
+
+#grid-container {
+  width: calc(var(--child-width) * var(--num-cols));
+  height: calc(var(--child-width) * var(--num-rows));
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (var(--child-width))[var];
+      grid-template-columns: repeat(var(--num-cols), var(--child-width));
+}
+
+#grid-container .child {
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: .4px solid black;
+  height: var(--child-width);
+  width: var(--child-width);
+}
+
+#grid-container .child.alive {
+  background-color: #302f2f;
+}
+
+#buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+
+#buttons button {
+  font-family: "Syne Tactile";
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  min-width: 180px;
+  border: 1px solid #303030;
+  border-radius: 4px;
+  padding: 4px;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  text-transform: uppercase;
+}
+
+#buttons button::after {
+  content: attr(data-keyboard-binding);
+  font-size: .6em;
+  display: block;
+  opacity: 0.5;
+}
+
+#buttons button:hover {
+  background: black;
+  color: white;
+}

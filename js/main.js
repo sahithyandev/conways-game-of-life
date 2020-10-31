@@ -1,15 +1,14 @@
-const numCols = 50;
-const numRows = 25;
-const timeInterval = 200;
+const numCols = 100;
+const numRows = 50;
+const timeInterval = 100;
+const GRID_CONTAINER = document.getElementById('grid-container');
+
 const CHILD_ID = {
 	generate: (x, y) => `child-${x}-${y}`,
 	getPosition: (childId) => {
 		return childId.split('-').slice(1);
 	}
 }
-
-// let grid = [];
-let isRunning = false;
 
 const baseState = {
 	grid: []
@@ -23,31 +22,8 @@ const stateHandler = {
 		return true;
 	}
 }
-
 const state = new Proxy(baseState, stateHandler);
-
-document.body.onload = () => {
-	state.grid = createGrid('random');
-
-	setBasicStyles();
-}
-
-document.body.addKeyBindings({
-	seperator: '+',
-	bindings: [{
-		keyBinding: 'ctrl+c',
-		action: () => {
-			state.grid = createGrid('empty');
-		}
-	}, {
-		keyBinding: ' ', // listener for space
-		action: () => {
-			isRunning = !isRunning;
-			console.log('running state', isRunning);
-			runSimulation();
-		}
-	}]
-})
+let isRunning = false;
 
 /**
  * Creates the grid
@@ -132,8 +108,7 @@ function updateChild(_grid, x, y, newValue) {
 }
 
 function updateGrid(_grid) {
-	const container = document.getElementById('container');
-	container.innerHTML = '';
+	GRID_CONTAINER.innerHTML = '';
 
 	let childArray = [];
 
@@ -156,6 +131,5 @@ function updateGrid(_grid) {
 		})
 	})
 
-	container.append(...childArray);
-
+	GRID_CONTAINER.append(...childArray);
 }

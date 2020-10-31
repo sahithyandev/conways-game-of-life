@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Conway's Game Of Life</title>
-        <link rel="stylesheet" href="./main.css" />
-        <script src="https://cdn.jsdelivr.net/gh/sahithyandev/KeyboardMaster@v1.0/lib/index.js"></script>
-    </head>
-    <body>
-        <div id="outer-container">
-            <div id="container"></div>
-        </div>
-        <script src="./main.js"></script>
-    </body>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Conway's Game Of Life</title>
+	<link rel="stylesheet" href="./style/main.css" />
+	<script src="https://cdn.jsdelivr.net/gh/sahithyandev/KeyboardMaster@v1.0/lib/index.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Syne+Tactile&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<header>
+		<span>Conway's</span>
+		<h1>Game Of Life</h1>
+	</header>
+
+	<main>
+		<div id="grid-container"></div>
+		<div id="buttons">
+			<button id="start-stop-button" data-keyboard-binding="SPACE">Start</button>
+			<button id="clear-button" data-keyboard-binding="CTRL+C">Clear</button>
+			<button id="clear-button" data-keyboard-binding="CTRL+G">Random Grid</button>
+		</div>
+	</main>
+
+	<script src="./js/main.js"></script>
+	<script src="./js/listeners.js"></script>
+</body>
+
 </html>
