@@ -16,6 +16,10 @@ function toggleRunning() {
     runSimulation();
 }
 
+function randomGrid() {
+    isRunning = false;
+    state.grid = createGrid('random');
+}
 
 document.body.onload = () => {
     state.grid = createGrid('random');
@@ -29,10 +33,18 @@ document.body.addKeyBindings({
         keyBinding: 'ctrl+c',
         action: clearGrid
     }, {
-        keyBinding: ' ', // listener for space
+        keyBinding: 'space', // listener for space
         action: toggleRunning
+    }, {
+        keyBinding: "ctrl+x",
+        action: randomGrid
     }]
 })
 
+KeyboardMaster.updateConfig({
+    "mode": "production"
+});
+
 document.getElementById('start-stop-button').onclick = toggleRunning;
 document.getElementById('clear-button').onclick = clearGrid;
+document.getElementById('random-grid-button').onclick = randomGrid;
